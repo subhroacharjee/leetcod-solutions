@@ -1,0 +1,1 @@
+Firstly we need to find if any word has extra characters.
