@@ -17,8 +17,23 @@ class Solution {
         }
         
        if(!set1.equals(set2)) return false;
-        Arrays.sort(map1);
-        Arrays.sort(map2);
+        for(int i =0; i< CHARACTER_LENGTH; i++) {
+            for (int j = i+1; j< CHARACTER_LENGTH; j++){
+                if (map1[i] > map1[j]) {
+                    map1[i] = map1[i] + map1[j];
+                    map1[j] = map1[i] - map1[j];
+                    map1[i] = map1[i] - map1[j];
+                }
+            }
+            
+            for (int j = i+1; j< CHARACTER_LENGTH; j++){
+                if (map2[i] > map2[j]) {
+                    map2[i] = map2[i] + map2[j];
+                    map2[j] = map2[i] - map2[j];
+                    map2[i] = map2[i] - map2[j];
+                }
+            }
+        }
         
         for (int i = 0; i < CHARACTER_LENGTH; i++) {
             if(map1[i] != map2[i]) return false;
