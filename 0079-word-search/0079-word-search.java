@@ -8,18 +8,6 @@ class Solution{
         m = board[0].length;
         matrix = board;
         this.word = word;
-        HashSet<Character> charSet = new HashSet<>();
-        for (int i=0; i < word.length(); i++) {
-            charSet.add(word.charAt(i));
-        }
-        
-      
-        
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[0].length; j++) {
-                if (!charSet.contains(board[i][j])) matrix[i][j] = '#';
-            }
-        }
         
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
