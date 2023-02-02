@@ -1,17 +1,27 @@
 class Solution {
-    public boolean isAlienSorted(String[] W, String O) {
-        Map<Character,Integer> alpha = new HashMap<>();
-        for (int i = 0; i < O.length(); i++)
-            alpha.put(O.charAt(i), i);
-        for (int i = 1; i < W.length; i++) {
-            String a = W[i-1], b = W[i];
-            for (int j = 0; j < a.length(); j++) {
-                if (j == b.length()) return false;
-                char achar = a.charAt(j), bchar = b.charAt(j);
-                if (alpha.get(achar) < alpha.get(bchar)) break;
-                if (alpha.get(achar) > alpha.get(bchar)) return false;
-            }
+    public boolean isAlienSorted(String[] words, String order) {
+        HashMap<Character, Integer> map = new HashMap<>();
+        for (int i = 0; i < order.length(); i++) {
+            map.put(order.charAt(i), i);
         }
+        
+        for (int i = 0; i < words.length -1;i++) {
+            String w1 = words[i], w2 = words[i+1];
+            
+            
+            for (int j = 0; j < w1.length(); j++) {
+                // checking if w2 is prefix of w1 or not
+                if (j == w2.length()) return false;
+                
+                char a = w1.charAt(j);
+                char b = w2.charAt(j);
+                if (map.get(a) < map.get(b)) break;
+                if (map.get(a) > map.get(b)) return false;
+            }
+            
+            
+        }
+        
         return true;
     }
 }
